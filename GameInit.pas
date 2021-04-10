@@ -73,7 +73,10 @@ begin
 		snakeBody.pY[i] := snakeBody.pY[i-1];
 	end;
 	TextColor(snakeColor);
-	WriteChar(snakeBody.pX[snake.len-1], snakeBody.pY[snake.len-1], snakeChar[2]);
+	for i:= 1 to snake.len-1 do
+	begin
+		WriteChar(snakeBody.pX[i], snakeBody.pY[i], snakeChar[2]);
+	end;
 	WriteChar(snakeBody.pX[snake.len], snakeBody.pY[snake.len], ' ');
 end;
 procedure CheckBody;
