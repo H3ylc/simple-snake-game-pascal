@@ -30,6 +30,7 @@ procedure Movement;
 procedure FoodConsumption;
 procedure BodyInit;
 procedure CheckBody;
+procedure WriteBody;
 
 implementation
 
@@ -72,6 +73,9 @@ begin
 		snakeBody.pX[i] := snakeBody.pX[i-1];
 		snakeBody.pY[i] := snakeBody.pY[i-1];
 	end;
+end;
+procedure WriteBody;
+begin
 	TextColor(snakeColor);
 	for i:= 1 to snake.len-1 do
 	begin
@@ -88,6 +92,7 @@ begin
 		and (snake.pY = snakeBody.pY[i]) then
 		begin
 			writeln('LOSE');
+			delay(500);
 			halt;
 		end;
 	end;
@@ -100,12 +105,10 @@ begin
 	if (snake.pX > ScreenWidth) or (snake.pX < 1) 
 	or (snake.pY > ScreenHeight) or (snake.pY < 1) then
 		halt;
+	WriteBody;
 	WriteChar(snake.pX, snake.pY, snakeChar[1]);
 	delay(speed);
 	CheckBody;
 	TextColor(White);
 end;
-{Надо бы ещё удаление после проигрыша добавить
-и исправить голову что бы она отличалась от тела
-но так лень, поэтому потом}
 end.
